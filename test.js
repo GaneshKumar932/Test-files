@@ -38,6 +38,7 @@ function findrepeat(array){
     
 const array1= [1,1,2,2,2,2,2,150,150,150,150,150,150,4,4,4,4];
 const finalresult = findrepeat(array1);
+document.getElementById('test1').innerHTML = finalresult ;
 console.log(finalresult);
 console.log('hi');
 
