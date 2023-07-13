@@ -1,44 +1,51 @@
 function compressString(str) {
+    
     let compressed = '';
-    let count = 1;
-  
-    for (let i = 1; i <= str.length; i++) {
-      if (str[i] === str[i - 1]) {
-        count++;
-      } else {
-        compressed += count + str[i - 1];
+    let count = 1 ;
+    let array = str.split('');
+    console.log(array);
+    array.reduce((previousValue,currentValue)=>{
+
+      console.log("previousvalue",previousValue, "currentValue",currentValue);
+      
+      if(previousValue===currentValue){
+              count++; 
+      }else{  
+        compressed += count + previousValue;
         count = 1;
-      }
-    }
-  
+             }
+      return currentValue;
+    });
+    compressed += count + array[array.length - 1];
+
     return compressed;
   }
   
-  const input = 'AAAABBBCCDAA';
+  const input = 'AAAABBBCCDAASSSSdddd';
   const compressedString = compressString(input);
   console.log(compressedString);
   document.getElementById('test').innerHTML = compressedString ;
 
 
 function findrepeat(array){
-  let count = [] ;
-  for (let i = 0; i<= Math.max(...array) ; i++) {
-    let filtered = array.filter((val)=>{return val===i;});
-    if(filtered.length > 0){
-      count[i]= filtered.length
-    }else{
-      count[i]=0;
-    }
-  }
-  console.log(count);
-  if(count.length > 0){
-    return Math.max(...count)* count.lastIndexOf(Math.max(...count))
-  }
+
+  let result=array.reduce((total,currentValue,)=>{
+  
+    if(total[currentValue]){
+            total[currentValue]=total[currentValue]+ 1; 
+    }else{  
+       total[currentValue]=1;
+           }
+    return total;
+  },{});
+  let repeatedTimes = Object.values(result);
+  let keys = Object.keys(result);
+  let final = Math.max(...repeatedTimes)*keys[repeatedTimes.lastIndexOf(Math.max(...repeatedTimes))]
+return final;
 };
     
-const array1= [1,1,2,2,2,2,2,150,150,150,150,150,150,4,4,4,4];
+const array1= [1,1,5,5,5,5,5,7,7,7,7,7,7,2,2,2,2,2,4,4,4];
 const finalresult = findrepeat(array1);
 document.getElementById('test1').innerHTML = finalresult ;
-console.log(finalresult);
 console.log('hi');
 

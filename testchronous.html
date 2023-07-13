@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="test1"></div>
+<div id="test2"></div>
+
+    <button onclick="handleclick1()">Synchronous</button>
+    <button onclick="handleclick2()">Asynchronous</button>
+<script>
+  function  handleclick1(){
+    setTimeout(
+        document.getElementById("test1").appendChild
+    )
+  }
+</script>
+</body>
+</html>
